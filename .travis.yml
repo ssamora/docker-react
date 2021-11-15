@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ssamora/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ssamora/docker-react npm run test -- --coverage
